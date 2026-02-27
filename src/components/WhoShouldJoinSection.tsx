@@ -36,7 +36,7 @@ const WhoShouldJoinSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter">
+          <h2 className="section-title mb-6">
             Who Should <span className="text-primary">Join?</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -46,18 +46,22 @@ const WhoShouldJoinSection = () => {
       </div>
 
       {/* Roles marquee - row 1 */}
-      <div className="overflow-hidden py-4">
-        <div className="flex animate-marquee">
-          <div className="flex items-center shrink-0">{renderRoles()}</div>
-          <div className="flex items-center shrink-0">{renderRoles()}</div>
-        </div>
-      </div>
+      <div className="marquee-shell border-y border-foreground/30 overflow-hidden">
+        <div className="marquee-content">
+          <div className="py-4">
+            <div className="flex animate-marquee">
+              <div className="flex items-center shrink-0">{renderRoles()}</div>
+              <div className="flex items-center shrink-0">{renderRoles()}</div>
+            </div>
+          </div>
 
       {/* Roles marquee - row 2 (reverse) */}
-      <div className="overflow-hidden py-4">
-        <div className="flex animate-marquee-reverse">
-          <div className="flex items-center shrink-0">{renderRoles()}</div>
-          <div className="flex items-center shrink-0">{renderRoles()}</div>
+          <div className="py-4 border-t border-foreground/15">
+            <div className="flex animate-marquee-reverse">
+              <div className="flex items-center shrink-0">{renderRoles()}</div>
+              <div className="flex items-center shrink-0">{renderRoles()}</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

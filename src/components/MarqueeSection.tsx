@@ -15,19 +15,21 @@ const MarqueeSection = () => {
   const renderItems = () =>
     items.map((item, i) =>
       item.type === "icon" ? (
-        <img key={i} src={logoIconBlack} alt="REVA RIFT" className="h-10 mx-8 opacity-40" />
+        <img key={i} src={logoIconBlack} alt="REVA RIFT" className="h-11 mx-8 opacity-80" />
       ) : (
-        <span key={i} className="mx-8 font-bold text-base md:text-lg tracking-widest text-foreground/60 whitespace-nowrap">
+        <span key={i} className="mx-8 font-bold text-base md:text-lg tracking-widest text-foreground whitespace-nowrap">
           {item.label}
         </span>
       )
     );
 
   return (
-    <div className="border-y border-border py-6 overflow-hidden bg-secondary">
-      <div className="flex animate-marquee">
-        <div className="flex items-center shrink-0">{renderItems()}</div>
-        <div className="flex items-center shrink-0">{renderItems()}</div>
+    <div className="marquee-shell border-y border-foreground/30 py-6 overflow-hidden bg-background">
+      <div className="marquee-content">
+        <div className="flex animate-marquee">
+          <div className="flex items-center shrink-0">{renderItems()}</div>
+          <div className="flex items-center shrink-0">{renderItems()}</div>
+        </div>
       </div>
     </div>
   );

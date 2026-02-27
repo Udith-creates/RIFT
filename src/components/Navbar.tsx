@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoFull from "@/assets/LOGO_TRANSPARENT/2nd_main_3.png";
+import logoFull from "@/assets/logo/2nd_main_3.png";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="flex items-center gap-2">
-          <img src={logoFull} alt="REVA RIFT" className="h-8" />
+          <img src={logoFull} alt="REVA RIFT" className="h-10 md:h-11" />
         </a>
 
         {/* Desktop */}

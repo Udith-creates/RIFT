@@ -30,7 +30,7 @@ const HeroSection = () => {
 
         {/* Main heading */}
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.9] tracking-tighter max-w-6xl"
+          className="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl max-w-6xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
@@ -46,8 +46,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          Join hundreds of engineers, designers, and researchers in Bangalore to prototype 
-          solutions that strengthen India's technological independence and critical infrastructure.
+          Meet in Bangalore to build bold prototypes, learn fast, and ship ideas that strengthen
+          India's digital future.
         </motion.p>
 
         {/* CTA Buttons */}

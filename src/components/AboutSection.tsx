@@ -22,7 +22,7 @@ const AboutSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight tracking-tighter">
+          <h2 className="section-title mb-8">
             Stronger <span className="text-primary">India</span><br />
             starts here
           </h2>

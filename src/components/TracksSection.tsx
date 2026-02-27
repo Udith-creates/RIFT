@@ -33,7 +33,7 @@ const TracksSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter">
+          <h2 className="section-title mb-6">
             Three Challenge{" "}
             <span className="text-primary">Tracks</span>
           </h2>

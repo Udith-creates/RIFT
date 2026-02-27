@@ -9,7 +9,7 @@ const CTASection = () => {
     <section className="py-32 bg-foreground text-background dark-section-lines" ref={ref}>
       <div className="container text-center flex flex-col items-center gap-10">
         <motion.h2
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter max-w-4xl"
+          className="section-title section-title-cta max-w-4xl"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.1 }}

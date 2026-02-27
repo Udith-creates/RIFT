@@ -57,7 +57,7 @@ const ScheduleSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter">
+          <h2 className="section-title mb-6">
             Event <span className="text-primary">Schedule</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -86,17 +86,19 @@ const ScheduleSection = () => {
               >
                 {/* Left content */}
                 <div className={`lg:w-1/2 ${i % 2 === 1 ? "lg:order-2 lg:pl-16" : "lg:pr-16 lg:text-right"}`}>
-                  <div className={`inline-block border-2 border-primary rounded-full px-4 py-1.5 text-sm font-bold text-primary mb-4`}>
+                  <div className={`inline-block border-2 border-primary rounded-full px-4 py-1.5 text-xs font-semibold text-primary mb-4`}>
                     {phase.day}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">{phase.title}</h3>
-                  <p className="text-base font-semibold text-primary mb-4">{phase.date}</p>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-6">{phase.description}</p>
+                  <h3 className="text-2xl md:text-3xl font-semibold mb-5 leading-snug text-foreground max-w-md">
+                    {phase.title}
+                  </h3>
+                  <p className="text-sm md:text-base font-semibold text-primary mb-4">{phase.date}</p>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-6">{phase.description}</p>
                   <div className={`flex flex-wrap gap-2 ${i % 2 === 0 ? 'lg:justify-end' : ''}`}>
                     {phase.highlights.map((highlight, idx) => (
                       <span
                         key={idx}
-                        className="text-xs px-3 py-1.5 bg-secondary rounded-full text-foreground font-medium"
+                        className="text-[11px] md:text-xs px-3 py-1.5 bg-secondary rounded-full text-foreground font-medium"
                       >
                         {highlight}
                       </span>
