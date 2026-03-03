@@ -5,12 +5,6 @@ import logoFull from "@/assets/logo/2nd_main_3.png";
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-20 border-b border-border overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-        backgroundSize: '80px 80px'
-      }} />
-
       <div className="relative z-10 container text-center flex flex-col items-center gap-10 px-4">
         {/* Date & Location pills */}
         <motion.div
