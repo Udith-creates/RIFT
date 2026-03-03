@@ -34,16 +34,24 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="nav-link text-sm font-semibold text-foreground hover:text-primary transition-colors py-1"
-            >
-              {link.label}
-            </a>
-          ))}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-10">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="nav-link text-sm font-semibold text-foreground hover:text-primary transition-colors py-1"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <a
+            href="#register"
+            className="btn-shine inline-flex items-center justify-center bg-primary text-primary-foreground px-5 py-2 rounded-full text-sm font-semibold hover:opacity-90 transition-opacity"
+          >
+            Register
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -66,6 +74,8 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="md:hidden bg-background border-b border-border overflow-hidden"
           >
+            <div className="px-6 pt-5 pb-6 text-center">
+              <div className="border-t border-border/70 pt-2">
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.label}
@@ -74,11 +84,20 @@ const Navbar = () => {
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: i * 0.05 }}
-                className="block px-6 py-4 text-base font-semibold text-foreground hover:text-primary hover:bg-muted transition-colors"
+                className="block py-3 text-base font-semibold text-foreground hover:text-primary transition-colors"
               >
                 {link.label}
               </motion.a>
             ))}
+              </div>
+            <a
+              href="#register"
+              onClick={() => setOpen(false)}
+              className="btn-shine mt-4 inline-flex items-center justify-center bg-primary text-primary-foreground px-6 py-3 rounded-full text-base font-semibold hover:opacity-90 transition-opacity w-full max-w-xs"
+            >
+              Register
+            </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
