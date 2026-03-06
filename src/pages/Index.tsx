@@ -1,13 +1,13 @@
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ImpactSection from "@/components/ImpactSection";
-import MarqueeSection from "@/components/MarqueeSection";
-import ScheduleSection from "@/components/ScheduleSection";
-import WhoShouldJoinSection from "@/components/WhoShouldJoinSection";
-import PartnersSection from "@/components/PartnersSection";
-import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import HeroSection from "@/sections/HeroSection";
+import AboutSection from "@/sections/AboutSection";
+import ImpactSection from "@/sections/ImpactSection";
+import MarqueeSection from "@/sections/MarqueeSection";
+import PreScheduleShowcase from "@/sections/PreScheduleShowcase";
+import ScheduleSection from "@/sections/ScheduleSection";
+import WhoShouldJoinSection from "@/sections/WhoShouldJoinSection";
+import CTASection from "@/sections/CTASection";
 
 const Index = () => {
   return (
@@ -18,10 +18,11 @@ const Index = () => {
       <AboutSection />
       <ImpactSection />
       <MarqueeSection />
+      <PreScheduleShowcase />
+      <MarqueeSection />
       <ScheduleSection />
       <WhoShouldJoinSection />
       <CTASection />
-      <PartnersSection />
       <Footer />
     </div>
   );
