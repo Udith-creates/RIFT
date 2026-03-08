@@ -6,8 +6,8 @@ import logoFull from "@/assets/logo/2nd_main_3.png";
 
 const navLinks = [
   { label: "About", href: "#about", type: "hash" },
-  { label: "Schedule", href: "#schedule", type: "hash" },
   { label: "Tracks", href: "#tracks", type: "hash" },
+  { label: "Schedule", href: "#schedule", type: "hash" },
   { label: "Contact", href: "#contact", type: "hash" },
 ];
 
@@ -28,14 +28,17 @@ const Navbar = () => {
     event.preventDefault();
 
     if (link.type === "route") {
-      navigate(link.href);
       setOpen(false);
+      navigate(link.href);
       return;
     }
 
     if (!isHomePage) {
-      navigate(`/${link.href}`);
       setOpen(false);
+      // Small delay on mobile to let menu start closing
+      setTimeout(() => {
+        navigate(`/${link.href}`);
+      }, open ? 100 : 0);
       return;
     }
 
@@ -43,11 +46,15 @@ const Navbar = () => {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.replaceState(null, "", link.href);
+      setOpen(false);
+      // On mobile, wait for menu to begin closing so scroll target is accurate
+      setTimeout(() => {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", link.href);
+      }, open ? 150 : 0);
+    } else {
+      setOpen(false);
     }
-
-    setOpen(false);
   };
 
   return (
