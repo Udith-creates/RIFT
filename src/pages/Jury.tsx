@@ -63,20 +63,18 @@ const Jury = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <main className="pt-32 pb-40">
-        <div className="w-full flex flex-col items-center">
+      <main className="pt-24 md:pt-32 pb-20 md:pb-40">
+        <div className="w-full flex flex-col items-center px-4 md:px-0">
           {/* Header Section */}
-          <div className="text-center mb-24 flex flex-col items-center">
+          <div className="text-center mb-12 md:mb-24 flex flex-col items-center">
             <h1 className="mx-auto flex items-center justify-center" style={{
               fontFamily: "'BL Melody SemiBold', sans-serif",
               fontWeight: 600,
-              fontSize: '48px',
+              fontSize: 'clamp(32px, 6vw, 48px)',
               lineHeight: '100%',
               letterSpacing: '0%',
               textAlign: 'center',
-              width: '202px',
-              height: '58px',
-              transform: 'rotate(0deg)',
+              minHeight: '58px',
               opacity: 1
             }}>
               The <span className="text-[#0052FF] ml-[0.25em]">Jury</span>
@@ -84,12 +82,11 @@ const Jury = () => {
             <p className="mx-auto text-muted-foreground opacity-70" style={{
               fontFamily: "'BL Melody Book', sans-serif",
               fontWeight: 400,
-              fontSize: '24px',
+              fontSize: 'clamp(18px, 4vw, 24px)',
               lineHeight: '100%',
               letterSpacing: '0%',
               textAlign: 'center',
-              width: '198px',
-              height: '29px',
+              minHeight: '29px',
               opacity: 1,
               display: 'flex',
               alignItems: 'center',
@@ -101,29 +98,25 @@ const Jury = () => {
 
           {/* Jury Members Grid */}
           <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center w-full"
             style={{
-              width: '1450px',
-              height: '970px',
-              gap: '100px',
-              opacity: 1,
-              transform: 'rotate(0deg)'
+              maxWidth: '1450px',
+              gap: '40px',
+              opacity: 1
             }}
           >
             {juryMembers.map((member, index) => (
               <div
                 key={index}
-                className="flex flex-col group"
-                style={{ width: '350px' }}
+                className="flex flex-col group w-full"
+                style={{ maxWidth: '350px' }}
               >
                 {/* Image Slot - 350x350 Frame */}
                 <div
-                  className="bg-[#E5E5E5] mb-6 overflow-hidden relative"
+                  className="bg-[#E5E5E5] mb-6 overflow-hidden relative w-full aspect-square"
                   style={{
-                    width: '350px',
-                    height: '350px',
-                    opacity: 1,
-                    transform: 'rotate(0deg)'
+                    maxWidth: '350px',
+                    opacity: 1
                   }}
                 >
                   {member.image ? (
@@ -140,7 +133,7 @@ const Jury = () => {
                 </div>
 
                 {/* Info Section */}
-                <div className="w-full" style={{ width: '350px' }}>
+                <div className="w-full" style={{ maxWidth: '350px' }}>
                   <div className="pb-1 border-b-[1px] border-black mb-2">
                     <h3 style={{
                       fontFamily: "'BL Melody Medium', sans-serif",
@@ -167,8 +160,9 @@ const Jury = () => {
                     lineHeight: '100%',
                     letterSpacing: '-0.06em',
                     verticalAlign: 'middle',
-                    width: '350px',
-                    height: '17px',
+                    width: '100%',
+                    maxWidth: '350px',
+                    minHeight: '17px',
                     opacity: 1,
                     display: 'flex',
                     alignItems: 'center'
