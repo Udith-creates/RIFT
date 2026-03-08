@@ -13,7 +13,7 @@ const ImpactSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="impact" className="py-24 border-b border-border" ref={ref}>
+    <section id="tracks" className="py-24 border-b border-border" ref={ref}>
       <div className="container">
         <motion.div
           className="max-w-3xl mx-auto text-center mb-14"
