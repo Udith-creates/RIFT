@@ -26,20 +26,13 @@ interface TeamMember {
 }
 
 const TEAM_MEMBERS: (TeamMember | null)[] = [
-  /* ── Row 1 ─────────────────────────────────────────── */
-  { name: "SOMESHWAR", designation: "Designation", photo: mainPhoto, linkedin: "#", twitter: "#" },
-  null,   // placeholder
-  null,   // placeholder
-
-  /* ── Row 2 ─────────────────────────────────────────── */
-  null,   // placeholder
-  null,   // placeholder
-  null,   // placeholder
-
-  /* ── Row 3 ─────────────────────────────────────────── */
-  null,   // placeholder
-  null,   // placeholder
-  null,   // placeholder
+  { name: "SHIVANESH", designation: "Finance & Sponsorship", photo: "", linkedin: "#", twitter: "#" },
+  { name: "UDITH", designation: "Technical Team", photo: "", linkedin: "#", twitter: "#" },
+  { name: "SUDHANSHU", designation: "Support Team", photo: "", linkedin: "#", twitter: "#" },
+  { name: "DEVANSHI", designation: "Executive Team", photo: "", linkedin: "#", twitter: "#" },
+  { name: "TANMAY", designation: "Technical Team", photo: "", linkedin: "#", twitter: "#" },
+  { name: "SIMRAN", designation: "Technical Team", photo: "", linkedin: "#", twitter: "#" },
+  { name: "SOMESHWAR", designation: "Design Team", photo: "", linkedin: "#", twitter: "#" },
 ];
 
 function ProfileCard({ member }: { member: TeamMember | null }) {
@@ -57,7 +50,7 @@ function ProfileCard({ member }: { member: TeamMember | null }) {
           </div>
         )}
         <img className="triangle-left" src={bottomTriangle} alt="" aria-hidden="true" draggable={false} />
-        {member && (
+        {member && member.photo && (
           <img className="profile-photo" src={member.photo} alt={member.name} draggable={false} />
         )}
         <img className="triangle-right" src={topTriangle} alt="" aria-hidden="true" draggable={false} />
