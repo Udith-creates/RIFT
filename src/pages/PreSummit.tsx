@@ -1,16 +1,21 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import eventImage from "@/assets/images/others/event-image.jpg";
 
 export default function PreSummit() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       
-      <main className="pt-20 pb-40">
-        {/* Event Image Placeholder */}
-        <section className="w-full h-[60vh] bg-gradient-to-b from-gray-900 to-black flex items-center justify-center relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent" />
-          <h3 className="text-xl md:text-2xl font-medium tracking-widest text-white/40 opacity-50 uppercase" style={{ fontFamily: "'Monument Extended', sans-serif" }}>event img</h3>
+      <main className="pb-40">
+        {/* Event Image Section */}
+        <section className="w-full h-[60vh] relative overflow-hidden flex items-center justify-center pt-16">
+          <img 
+            src={eventImage} 
+            alt="REVA RIFT Event" 
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black" />
         </section>
 
         <div className="container max-w-6xl px-4 -mt-10 relative z-10 text-center">
