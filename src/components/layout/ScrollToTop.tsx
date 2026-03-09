@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigationType } from "react-router-dom";
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
+  const action = useNavigationType();
 
   useEffect(() => {
+    // If the user navigates back/forward (POP), let the browser handle scroll restoration
+    if (action === "POP") return;
+
     if (!hash) {
       window.scrollTo(0, 0);
     } else {
@@ -17,7 +21,7 @@ const ScrollToTop = () => {
         }, 100);
       }
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, action]);
 
   return null;
 };
