@@ -48,12 +48,10 @@ export default function Workshops() {
           {/* Header */}
           <div className="text-center mb-24 flex flex-col items-center">
             <h1 className="mx-auto flex items-center justify-center text-center" style={{ 
-              fontFamily: "'BL Melody SemiBold', sans-serif",
+              fontFamily: "'Monument Extended', sans-serif",
               fontWeight: 600,
               fontSize: '48px',
               lineHeight: '100%',
-              width: '258px',
-              height: '58px',
               marginBottom: '16px'
             }}>
               <span className="text-[#0052FF]">Work</span>shops
@@ -65,23 +63,23 @@ export default function Workshops() {
           <div className="space-y-32 md:space-y-48">
             {/* Workshop 1 */}
             <WorkshopItem 
-              title="Applied AI & Machine Learning"
-              description="Deep dive into integrating LLMs and generative AI into real-world applications. Learn to build agents that solve complex problems using modern frameworks."
+              title="Generative AI & Intelligent Systems"
+              description="Explore how modern generative AI models are transforming the way we build applications and solve problems. Participants will learn the fundamentals of AI-driven systems, how large language models process information, and how these technologies can be integrated into real-world applications to automate tasks, generate insights, and enhance digital products."
               image={workshop1}
             />
 
             {/* Workshop 2 */}
             <WorkshopItem 
-              title="Rapid Product Prototyping"
-              description="Move from idea to high-fidelity prototype in record time. Master tools like Figma and Framer to validate your concepts before writing a single line of code."
+              title="Cloud & Application Development with Google Technologies"
+              description="Discover how modern applications are built by connecting powerful cloud services and development tools. This workshop introduces participants to platforms such as Google Cloud and Firebase, demonstrating how APIs, cloud infrastructure, and scalable backend services can be combined to transform an idea or prototype into a fully functional and deployable application."
               image={workshop2}
               isReversed
             />
 
             {/* Workshop 3 */}
             <WorkshopItem 
-              title="Cloud Native Architecture"
-              description="Learn to build scalable, resilient systems from day one. Explore Kubernetes, serverless patterns, and CI/CD pipelines to deploy globally."
+              title="Game Development & Interactive Systems"
+              description="Dive into the world of game design and development, learning how ideas evolve into interactive digital experiences. Using tools such as Pygame and Unreal Engine 5, participants will explore the fundamentals of gameplay mechanics, environment design, and basic programming concepts that power modern games and immersive interactive systems."
               image={workshop3}
             />
           </div>
