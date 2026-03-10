@@ -6,7 +6,7 @@ import topTriangle from "@/assets/images/team/top-triangle.svg";
 import mainPhoto from "@/assets/images/team/main.png";
 import linkedinIcon from "@/assets/icons/linkedin.svg";
 import xIcon from "@/assets/icons/x.svg";
-import gdgTeam from "@/assets/images/team/gdg-team.jpeg";
+import gdgTeam from "@/assets/images/team/gdg-team.webp";
 import MarqueeSection from "@/sections/MarqueeSection";
 
 /*
