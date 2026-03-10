@@ -1,5 +1,6 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ensureGsapPluginsRegistered, prefersReducedMotion } from "@/lib/gsap";
 
 const phases = [
   {
@@ -27,43 +28,83 @@ const phases = [
 
 const ScheduleSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
-  const [fillPercent, setFillPercent] = useState(0);
+  const fillLineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = rect.top;
-      const sectionHeight = rect.height;
-      const windowHeight = window.innerHeight;
+  useLayoutEffect(() => {
+    ensureGsapPluginsRegistered();
+    if (!sectionRef.current) return;
 
-      // Calculate how far through the section we've scrolled
-      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - sectionTop) / (sectionHeight + windowHeight * 0.5)));
-      setFillPercent(scrollProgress * 100);
-    };
+    if (prefersReducedMotion()) {
+      if (fillLineRef.current) fillLineRef.current.style.height = "100%";
+      return;
+    }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const ctx = gsap.context(() => {
+      const heading = sectionRef.current?.querySelector("[data-schedule-heading]");
+      const phasesEls = sectionRef.current?.querySelectorAll("[data-schedule-phase]");
+
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            ease: "power2.out",
+            scrollTrigger: { trigger: heading, start: "top 85%", once: true },
+          },
+        );
+      }
+
+      if (fillLineRef.current) {
+        gsap.fromTo(
+          fillLineRef.current,
+          { height: "0%" },
+          {
+            height: "100%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top center",
+              end: "bottom center",
+              scrub: true,
+            },
+          },
+        );
+      }
+
+      if (phasesEls?.length) {
+        gsap.fromTo(
+          phasesEls,
+          { opacity: 0, y: 34, willChange: "transform, opacity" },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            stagger: 0.12,
+            clearProps: "transform,opacity,willChange",
+            scrollTrigger: { trigger: phasesEls[0], start: "top 85%", once: true },
+          },
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section id="schedule" className="py-32 border-b border-border" ref={sectionRef}>
       <div className="container">
-        <motion.div
-          className="text-center mb-24"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-        >
+        <div className="text-center mb-24" data-schedule-heading>
           <h2 className="section-title mb-6">
             Event <span className="text-primary">Schedule</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Four days of intensive collaboration, learning, and innovation.
           </p>
-        </motion.div>
+        </div>
 
         {/* Timeline */}
         <div className="relative max-w-5xl mx-auto">
@@ -71,18 +112,17 @@ const ScheduleSection = () => {
           <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-0.5 bg-border hidden lg:block" />
           {/* Center line - fill on scroll */}
           <div
-            className="absolute left-1/2 top-0 -translate-x-1/2 w-0.5 bg-primary hidden lg:block transition-all duration-300 ease-out"
-            style={{ height: `${fillPercent}%` }}
+            ref={fillLineRef}
+            className="absolute left-1/2 top-0 -translate-x-1/2 w-0.5 bg-primary hidden lg:block"
+            style={{ height: "0%" }}
           />
 
           <div className="flex flex-col gap-24">
             {phases.map((phase, i) => (
-              <motion.div
+              <div
                 key={i}
                 className="relative flex flex-col lg:flex-row items-start gap-12"
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 + i * 0.2 }}
+                data-schedule-phase
               >
                 {/* Left content */}
                 <div className={`lg:w-1/2 ${i % 2 === 1 ? "lg:order-2 lg:pl-16" : "lg:pr-16 lg:text-right"}`}>
@@ -111,7 +151,7 @@ const ScheduleSection = () => {
 
                 {/* Spacer for opposite side */}
                 <div className={`hidden lg:block lg:w-1/2 ${i % 2 === 1 ? "lg:order-1" : ""}`} />
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

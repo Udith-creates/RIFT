@@ -1,4 +1,6 @@
 import logoIconBlack from "@/assets/logo/alt_R_black.png";
+import { useLayoutEffect, useRef } from "react";
+import { createScrollReveal } from "@/lib/gsap";
 
 const items = [
   { type: "text" as const, label: "REVA RIFT 2026" },
@@ -12,6 +14,13 @@ const items = [
 ];
 
 const MarqueeSection = () => {
+  const shellRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!shellRef.current) return;
+    return createScrollReveal([shellRef.current], { y: 10, duration: 0.55, stagger: 0 });
+  }, []);
+
   const renderItems = () =>
     items.map((item, i) =>
       item.type === "icon" ? (
@@ -24,7 +33,7 @@ const MarqueeSection = () => {
     );
 
   return (
-    <div className="marquee-shell border-y border-foreground/30 py-6 overflow-hidden bg-background">
+    <div ref={shellRef} className="marquee-shell border-y border-foreground/30 py-6 overflow-hidden bg-background">
       <div className="marquee-content">
         <div className="flex animate-marquee">
           <div className="flex items-center shrink-0">{renderItems()}</div>

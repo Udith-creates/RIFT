@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
+import { createScrollReveal } from "@/lib/gsap";
 
 const roles = [
   "Developers & Engineers",
@@ -15,6 +16,12 @@ const roles = [
 const WhoShouldJoinSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!marqueeRef.current) return;
+    return createScrollReveal([marqueeRef.current], { y: 12, duration: 0.6, stagger: 0 });
+  }, []);
 
   const renderRoles = () =>
     roles.map((role, i) => (
@@ -46,7 +53,7 @@ const WhoShouldJoinSection = () => {
       </div>
 
       {/* Roles marquee - row 1 */}
-      <div className="marquee-shell border-y border-foreground/30 overflow-hidden">
+      <div ref={marqueeRef} className="marquee-shell border-y border-foreground/30 overflow-hidden">
         <div className="marquee-content">
           <div className="py-4">
             <div className="flex animate-marquee">

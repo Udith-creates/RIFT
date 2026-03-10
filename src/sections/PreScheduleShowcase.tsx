@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Link } from "react-router-dom";
 
 // Image imports
@@ -61,8 +60,8 @@ const SLIDE_INTERVAL_MS = 2500;
 
 const PreScheduleShowcase = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
   const [activeSlides, setActiveSlides] = useState<number[]>(showcaseCards.map(() => 0));
+  const isInView = useInView(sectionRef, { once: true, margin: "-120px" });
 
   useEffect(() => {
     // Preload all images to prevent flickering and server pings during transitions
